@@ -1,0 +1,3 @@
+<?php
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_PS_EMPL_PS_DOCS_FROM_PS_EMPL_TITLE'] = 'Работники КЦ';

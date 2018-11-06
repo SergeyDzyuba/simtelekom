@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://receipt.taxcom.ru/v01/show?id=4AC674E0-54EC-4590-82DE-A5F2875760BF -->
+<html style="" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Сервис ОФД Такском для проверки кассовых чеков</title>
+        <meta name="description" content="Сервис ОФД Такском для проверки кассовых чеков онлайн: полная информация о каждом чеке онлайн-кассы. Сервис экспресс проверки кассового чека с 2017 года.">
+        <meta name="keywords" content="чек проверить чек через офд проверка чеков офд проверка чека офд сайт проверки чеков офд на сайте проверить чек онлайн сайт проверки чеков онлайн проверка чека на подлинность проверить чек">
+        <meta name="viewport" content="width=550, target-densitydpi=device-dpi, initial-scale=0.6, maximum-scale=1, user-scalable=yes">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="robots" content="noindex,nofollow">
+        <link href="./05.04.2018, logo-taxcom-check_files/bundle_css" rel="stylesheet">
+
+        <link href="./05.04.2018, logo-taxcom-check_files/fontface.css" rel="stylesheet">
+        <link href="./05.04.2018, logo-taxcom-check_files/font-awesome.min.css" rel="stylesheet">
+
+        <script src="./05.04.2018, logo-taxcom-check_files/modernizr"></script>
+
+    
+        <script src="./05.04.2018, logo-taxcom-check_files/jquery"></script>
+
+        <script src="./05.04.2018, logo-taxcom-check_files/bootstrap"></script>
+
+        
+        <script src="./05.04.2018, logo-taxcom-check_files/JsBarcode.all.js.загружено"></script>
+    </head>
+    <body style="">
+        <header class="header">
+            <div class="wrapper">
+                <div class="grid-container justify-container">
+                    <div class="justify-item" style="vertical-align: middle;">
+                        <a class="header-logo" href="https://receipt.taxcom.ru/">
+                            <img src="./05.04.2018, logo-taxcom-check_files/logo-taxcom-check.png" width="36" height="48" alt="Такском Чек">
+                        </a>
+                        <div class="header-title">
+                            Такском Чек
+                        </div>
+                    </div>
+                    <div class="header-menu justify-item">
+                        <table>
+                            <tbody><tr>
+                            <td id="printButtonPDF" style="display: block;">
+                                <a href="https://receipt.taxcom.ru/Reciept/Upload?FiscalSign=2032263979&amp;Summ=120.00" target="_blank" class="btn btn-inverse">
+                                    Печать
+                                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <a href="http://kkt-taxcom.ru/" id="about_serv">О сервисе</a>
+                            </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main">
+            <div class="wrapper">
+                
+
+<style>
+    .invoice-box {
+        max-width: 470px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 5px 2px rgba(0,0,0,.3);
+        font-size: 18px;
+        line-height: 20px;
+        font-family: 'CourierNewPSMT', 'Courier New', monospace;
+        color: black;
+    }
+
+    /*.invoice-box table {
+        width: 100%;
+        max-width: 470px;
+        line-height: inherit;
+        text-align: left;
+        table-layout: fixed;
+    }
+
+    .invoice-box table td {
+        vertical-align: top;
+        overflow-wrap: break-word;  
+        word-wrap: break-word;
+        word-break: break-all;  
+        white-space: normal;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+        white-space: nowrap;
+    }
+    .invoice-box table tr td:nth-child(3) {
+        text-align: right;
+        white-space: nowrap;
+    }
+    .invoice-box table tr.total {
+        font-size: 32px;
+    }
+    .invoice-box table tr.item {
+        word-spacing: -7px;
+    }
+    .invoice-box table tr.total td {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }*/
+
+</style>
+
+<div class="grid-container">
+    <div class="main-content">
+            <div class="jumbotron">
+                <h1 id="receipt_title">По идентификатору <span class="slip-id">2032263979</span> найден чек</h1>
+                <div class="receipt-notification">
+    <p>Наличие чека в базе оператора фискальных данных подтверждает, что продавец при расчетах применил контрольно-кассовую технику в соответствии <span style="white-space: nowrap;">с требованиями</span> Федерального закона от 22.05.2003 №54-ФЗ «О применении контрольно-кассовой техники при осуществлении наличных денежных расчетов и (или) расчетов с использованием электронных средств платежа».
+    </p>
+    <p class="receipt-deltext">Важно! Если сообщение, содержащее ссылку на этот чек, поступило Вам по ошибке, пожалуйста, удалите его. 
+    </p>
+</div>
+                <div class="container">
+
+
+                    <div class="invoice-box">
+                        <div>
+	
+		<style>
+		.receipt_report .position {
+		   font-weight: bold;
+		}
+		.receipt_report {
+		   max-width: 410px;
+		}
+		.receipt_report table {
+		   border-collapse: collapse;
+		   width: 100%;
+		}
+		.receipt_report tr, .receipt_report td {
+		   padding: 0;
+		   vertical-align: top;
+		   font-family: 'CourierNewPSMT', 'Courier New', monospace;
+		   font-size: 15px;
+		}
+		.receipt_report td + td {
+		   text-align: right;
+		}
+		</style>
+
+	    <div class="receipt_report">
+
+			<table>
+				<tbody><tr>
+					<td colspan="2" align="center"><b><span id="fld_IA5AE16BA9">ООО "СИМ ТЕЛЕКОМ"</span></b></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><b>ИНН <span id="fld_IFF233FC98">7707840631  </span></b></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span style="display:none"><span id="fld_IA9BA96DC9">127410,г.Москва,ш.Алтуфьевское,д.33Г</span></span><span id="fld_IACA0D987A">127410, г.Москва, ш.Алтуфьевское, д.33Г</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span id="fld_ID2DC88709">http://sim-sim.com</span></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" align="center" class="result"><span style="display:none"><span id="fld_I972E09F89">04.04.2018 15:31</span></span><span id="fld_I3304D483A">04.04.2018 15:31</span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span class="name">КАССОВЫЙ ЧЕК №&nbsp;</span><span class="result"><span id="fld_IC0FC84009">11</span></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span class="name">Смена №&nbsp;</span><span class="result"><span id="fld_IBB73509AA">267</span></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span class="name"><span id="fld_I9C0943D3C"></span></span><span class="result"><span id="fld_I1DE702AA6"></span></span></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><span class="name"><span id="fld_ID30B4B98C"></span></span><span class="result"><span id="fld_IBA4566BF6"></span></span></td>
+				</tr>
+
+				<tr>
+					<td colspan="2" align="center" class="result"><b><span id="fld_I30345CA1B">ПРИХОД</span></b></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2"><br></td>
+				</tr>
+			</tbody></table>
+
+
+			<div id="vmb_I19A446CC8372029315">
+		<input type="hidden" name="vmb_I19A446CC8372029315$blocksCount" id="vmb_I19A446CC8372029315_blocksCount"><div class="ttc_multiple_block_panel">
+
+		</div><table name="vmb_I19A446CC8372029315$vblock0" id="vmb_I19A446CC8372029315_vblock0" class="verticalBlock">
+			<tbody><tr>
+				<td class="verticalBlockContent">
+				<table>
+					<tbody><tr>
+						<td colspan="2" class="position"><span id="vmb_I19A446CC8372029315_vblock0_ctl20_fld_I92AF67E37">Аванс за услуги связи</span> <span id="vmb_I19A446CC8372029315_vblock0_ctl21_fld_IB84E76725"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl22_fld_IF3A7073D9"></span></td>
+					</tr>
+					<tr class="result">
+						<td colspan="2" style="text-align: right"><span id="vmb_I19A446CC8372029315_vblock0_ctl27_fld_I65BDE5075">1.000000</span> X <span id="vmb_I19A446CC8372029315_vblock0_ctl23_fld_IC333A8708">120.00</span></td>
+					</tr>
+
+					<tr>
+						<td class="name" style="white-space: nowrap; width:25%"><span id="vmb_I19A446CC8372029315_vblock0_ctl25_fld_I695CC27FD"></span></td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl26_fld_IAD3E0BD13"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl24_fld_I9031AB9C7"></span></td>
+					</tr>
+					<tr>
+						<td class="name">Сумма</td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl33_fld_I1843784E11">=</span> <span id="vmb_I19A446CC8372029315_vblock0_ctl32_fld_IE0CAD4E15">120.00</span></td>
+					</tr>
+
+
+					<tr>
+						<td class="name"><span style="display:none"><span id="vmb_I19A446CC8372029315_vblock0_ctl28_fld_IBD4458CD7">18%</span></span><span id="vmb_I19A446CC8372029315_vblock0_ctl29_fld_I4F7BC184D">НДС 18%</span></td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl31_fld_IAD2DD7F512">=</span> <span id="vmb_I19A446CC8372029315_vblock0_ctl30_fld_IFF30DC0E6">18.31</span></td>
+					</tr>
+
+					<tr>
+						<td class="name"><span id="vmb_I19A446CC8372029315_vblock0_ctl35_fld_IB4B8133714"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl38_fld_I8458FD0F14"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl41_fld_I220F982413"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl44_fld_IDC786C2918"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl47_fld_IAC19560118"></span></td>
+						<td class="result" style="white-space: nowrap">
+						<span id="vmb_I19A446CC8372029315_vblock0_ctl36_fld_IA06BDB511A"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl39_fld_IA36AC8791A"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl42_fld_I9E365DF219"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl45_fld_I51D2E1DB1E"></span> <span id="vmb_I19A446CC8372029315_vblock0_ctl48_fld_I5F627F031E"></span>
+						<span id="vmb_I19A446CC8372029315_vblock0_ctl34_fld_IDE2B023EE"></span><span id="vmb_I19A446CC8372029315_vblock0_ctl37_fld_IC8EF5D66E"></span><span id="vmb_I19A446CC8372029315_vblock0_ctl40_fld_I997CD6D7D"></span><span id="vmb_I19A446CC8372029315_vblock0_ctl43_fld_IB1F8D3E12"></span><span id="vmb_I19A446CC8372029315_vblock0_ctl46_fld_IF5E3E86612"></span>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td class="name" style="white-space: nowrap; width: 50%"><span id="vmb_I19A446CC8372029315_vblock0_ctl01_fld_I85B8E3EE">Признак способа расчета</span></td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl00_fld_I136C48778">ПОЛНЫЙ РАСЧЕТ</span></td>
+					</tr>
+
+					<tr>
+						<td class="name"><span id="vmb_I19A446CC8372029315_vblock0_ctl03_fld_I3BCEF667F">Признак предмета расчета</span></td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl02_fld_I627E4C7A9">ТОВАР</span></td>
+					</tr>
+					<tr>
+						<td class="name"><span id="vmb_I19A446CC8372029315_vblock0_ctl05_fld_I656DD0B213"></span></td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl04_fld_I60453E21D"></span></td>
+					</tr>
+					<tr>
+						<td class="name"><span id="vmb_I19A446CC8372029315_vblock0_ctl50_fld_ICB8E8F2518"></span></td>
+						<td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl49_fld_I749B8FE12"></span></td>
+					</tr>
+				</tbody></table>
+
+				<table>
+					<tbody><tr>
+					  <td class="name" colspan="2" align="center"><span id="vmb_I19A446CC8372029315_vblock0_ctl14_fld_IB9A8A27113"></span></td>
+					</tr>
+				    <tr>
+					  <td class="name" style="white-space: nowrap; width:25%"><span id="vmb_I19A446CC8372029315_vblock0_ctl07_fld_I306E9CA01B"></span></td>
+					  <td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl06_fld_IF26AA4D315"></span></td>
+				    </tr>
+				</tbody></table>
+
+
+				<div id="vmb_I19A446CC8372029315_vblock0_vmb_IF279C227121373056840">
+					<input type="hidden" name="vmb_I19A446CC8372029315$vblock0$vmb_IF279C227121373056840$blocksCount" id="vmb_I19A446CC8372029315_vblock0_vmb_IF279C227121373056840_blocksCount"><div class="ttc_multiple_block_panel">
+
+					</div>
+				</div>
+
+				<div id="vmb_I19A446CC8372029315_vblock0_vmb_I6B774579121373056840">
+					<input type="hidden" name="vmb_I19A446CC8372029315$vblock0$vmb_I6B774579121373056840$blocksCount" id="vmb_I19A446CC8372029315_vblock0_vmb_I6B774579121373056840_blocksCount"><div class="ttc_multiple_block_panel">
+
+					</div>
+				</div>
+				<div id="vmb_I19A446CC8372029315_vblock0_vmb_IBADB3146121373056840">
+					<input type="hidden" name="vmb_I19A446CC8372029315$vblock0$vmb_IBADB3146121373056840$blocksCount" id="vmb_I19A446CC8372029315_vblock0_vmb_IBADB3146121373056840_blocksCount"><div class="ttc_multiple_block_panel">
+
+					</div>
+				</div>
+
+
+				<table>
+				    <tbody><tr>
+					  <td class="name" style="white-space: nowrap; width:25%"><span id="vmb_I19A446CC8372029315_vblock0_ctl09_fld_IE3F85C5719"></span></td>
+					  <td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl08_fld_IEC3D820413"></span></td>
+				    </tr>
+				    <tr>
+					  <td class="name"><span id="vmb_I19A446CC8372029315_vblock0_ctl13_fld_IE1BE25BC18"></span></td>
+					  <td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl12_fld_I6A727E0312"></span></td>
+				    </tr>
+				    <tr>
+					  <td class="name"><span id="vmb_I19A446CC8372029315_vblock0_ctl11_fld_IC28940B41A"></span></td>
+					  <td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl10_fld_I27C334B14"></span></td>
+				    </tr>
+				</tbody></table>
+
+				<table>
+					<tbody><tr>
+						<td colspan="2" align="center"><span id="vmb_I19A446CC8372029315_vblock0_ctl18_fld_IFF3103B0F"></span></td>
+					</tr>
+					<tr>
+					  <td class="name" style="white-space: nowrap; width:25%"><span id="vmb_I19A446CC8372029315_vblock0_ctl16_fld_I813D3CDB11"></span></td>
+					  <td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl15_fld_I54CD14FEB"></span></td>
+					</tr>
+					<tr>
+					  <td class="name" style="white-space: nowrap; width:25%"><span id="vmb_I19A446CC8372029315_vblock0_ctl17_fld_I49D84925F"></span></td>
+					  <td class="result"><span id="vmb_I19A446CC8372029315_vblock0_ctl19_fld_IFAEC6C9C9"></span></td>
+					</tr>
+				</tbody></table>
+
+
+			<div id="vmb_I19A446CC8372029315_vblock0_vmb_IC4A32E9BA921756881">
+					<input type="hidden" name="vmb_I19A446CC8372029315$vblock0$vmb_IC4A32E9BA921756881$blocksCount" id="vmb_I19A446CC8372029315_vblock0_vmb_IC4A32E9BA921756881_blocksCount"><div class="ttc_multiple_block_panel">
+
+					</div>
+				</div>
+
+
+		</td>
+			</tr>
+		</tbody></table>
+	</div>
+
+			<table>
+				<tbody><tr>
+					<td colspan="2"><br></td>
+				</tr>
+				<tr>
+					<td class="name" style="width:25%; font-size: 22px"><b>ИТОГ</b></td>
+					<td class="result allow-empty" style="font-size: 22px"><b>= <span id="fld_I2D10F7F63">120.00</span></b></td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><br></td>
+				</tr>
+
+				<tr>
+					<td class="name">НАЛИЧНЫМИ</td>
+					<td class="result"><span id="fld_IF1FA18DF12">=</span> <span id="fld_IF2E7D4DA7">0.00</span></td>
+				</tr>
+
+				<tr>
+					<td class="name">ЭЛЕКТРОННЫМИ</td>
+					<td class="result"><span id="fld_I87B8466F11">=</span> <span id="fld_I2B3218A06">120.00</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I5B866BADE">АВАНС:</span></td>
+					<td class="result"><span id="fld_I859D06314">=</span> <span id="fld_I3199C97A8">0.00</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_IE4B96AB6F">В КРЕДИТ:</span></td>
+					<td class="result"><span id="fld_I783304015">=</span> <span id="fld_I6BE4D2439">0.00</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I1701F93A13">ОБМЕН:</span></td>
+					<td class="result"><span id="fld_IE14FB5EC19">=</span> <span id="fld_I82C18817D">0.00</span></td>
+				</tr>
+			</tbody></table>
+
+			<table>
+				<tbody><tr>
+					<td class="name" style="white-space: nowrap; width:25%"><span id="fld_I86FA8B32B">СУММА НДС 18%</span></td>
+					<td class="result"><span id="fld_IB0FA8AD411">=</span> <span id="fld_I89709AE15">18.31</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I871FEC2AB"></span></td>
+					<td class="result"><span id="fld_IBDA5ACDC11"></span> <span id="fld_I89709AE95"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I6E03D3D9A"></span></td>
+					<td class="result"><span id="fld_I62C471B310"></span> <span id="fld_IDBAB935E4"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I616816CAC"></span></td>
+					<td class="result"><span id="fld_ID48613F012"></span> <span id="fld_IE81C22336"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_ID7E166FEF"></span></td>
+					<td class="result"><span id="fld_I3E68CD9815"></span> <span id="fld_I611CC7DB9"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_ID7E4BFF6F"></span></td>
+					<td class="result"><span id="fld_I371807A015"></span> <span id="fld_I611CC7E39"></span></td>
+				</tr>
+				<tr>
+					<td class="name" style="white-space: nowrap"><span id="fld_IF2D9C2F711"></span></td>
+					<td class="result"> <span id="fld_IFC5A18FC"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I5447FD1211"></span></td>
+					<td class="result"><span id="fld_I1A987841B"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_IA0A5FCDBF"></span></td>
+					<td class="result"><span id="fld_I73D738189"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I7AA69FAC15"></span></td>
+					<td class="result"><span id="fld_I66AD36ADF"></span></td>
+				</tr>
+			</tbody></table>
+
+			<div id="vmb_IB0AC37F1C372029315">
+		<input type="hidden" name="vmb_IB0AC37F1C372029315$blocksCount" id="vmb_IB0AC37F1C372029315_blocksCount"><div class="ttc_multiple_block_panel">
+
+		</div>
+	</div>
+
+			<div id="vmb_I9A5C6203C372029315">
+		<input type="hidden" name="vmb_I9A5C6203C372029315$blocksCount" id="vmb_I9A5C6203C372029315_blocksCount"><div class="ttc_multiple_block_panel">
+
+		</div>
+	</div>
+			<div id="vmb_I864C8E76C372029315">
+		<input type="hidden" name="vmb_I864C8E76C372029315$blocksCount" id="vmb_I864C8E76C372029315_blocksCount"><div class="ttc_multiple_block_panel">
+
+		</div>
+	</div>
+			<table>
+			   <tbody><tr>
+				 <td class="name" style="width:25%"><span id="fld_I7DEF48CD13"></span></td>
+				 <td class="result"><span id="fld_IA40CA3B4D"></span></td>
+			   </tr>
+			   <tr>
+				 <td class="name"><span id="fld_I2230076812"></span></td>
+				 <td class="result"><span id="fld_IC050D1D5C"></span></td>
+			   </tr>
+			   <tr>
+				 <td class="name"><span id="fld_IFBDCE9B814"></span></td>
+				 <td class="result" style=" "><span id="fld_I2CA5875E"></span></td>
+			   </tr>
+			</tbody></table>
+			<div id="vmb_IA6DF77A89372029315">
+		<input type="hidden" name="vmb_IA6DF77A89372029315$blocksCount" id="vmb_IA6DF77A89372029315_blocksCount"><div class="ttc_multiple_block_panel">
+
+		</div>
+	</div>
+
+
+
+			<table>
+				<tbody><tr>
+					<td colspan="2"><br></td>
+				</tr>
+				<tr>
+					<td class="name" style="white-space: nowrap; width:25%"><span id="fld_ID8A3275F10">САЙТ ФНС:</span></td>
+					<td class="result"><span id="fld_I6AA98036A">www.nalog.ru</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_IAB1CFCA613">Тел. или эл. адрес<br>покупателя</span></td>
+					<td class="result"><span id="fld_IB865A9ADD">loky1976@yandex.ru</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I84008B5CC">№ автомата</span></td>
+					<td class="result"><span id="fld_I4C7801C36">3010001</span></td>
+				</tr>
+				<tr>
+					<td class="name">Система НО</td>
+					<td class="result"><span id="fld_I4327C78E7">ОСН</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I7434E49AC">Рег.№ ККТ</span></td>
+					<td class="result"><span id="fld_IBAD61F9D6">0000983077047508    </span></td>
+				</tr>
+
+				<tr>
+					<td class="name"><span id="fld_IA3E8F3F0E">Зав.№ ФН</span></td>
+					<td><span id="fld_I3E08B7A78">8712000101026780</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I7D1E694FD">№ ФД</span></td>
+					<td class="result"><span id="fld_ID2246CE27">6194</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I269E585AC">Версия ФФД</span></td>
+					<td class="result"><span id="fld_I2964F2336">1.05</span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_IB62792A49">ФПД</span></td>
+					<td class="result"><span id="fld_I21D902173">2032263979</span></td>
+				</tr>
+
+				<tr>
+					<td class="name"><span id="fld_IB60A75EF9"></span></td>
+					<td class="result"><span id="fld_I21D901E23"></span></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_IB64761209"></span></td>
+					<td class="result"><span id="fld_I21D902133"></span></td>
+				</tr>
+				<tr>
+					<td colspan="2"><br></td>
+				</tr>
+				<tr>
+					<td class="name"><span id="fld_I3686F45EF"></span></td>
+					<td class="result"><span id="fld_I7FC1BABB9"></span></td>
+				</tr>
+				<tr>
+					<td class="name" colspan="2">Адрес сайта для просмотра чека<br>https://receipt.taxcom.ru</td>
+				</tr>
+			</tbody></table>
+
+
+			<table>
+				<tbody><tr>
+					<td colspan="2"><br></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="position" style="text-align: center">СПАСИБО<br>ЗА ПОКУПКУ!</td>
+				</tr>
+			</tbody></table>
+		</div>
+
+
+
+<div style="display:none"><nobr><input name="FldIB9A9315518" type="text" value="1" id="FldIB9A9315518"><span></span></nobr></div><div style="display:none"><nobr><input name="FldI4FE0D8B11F" type="text" id="FldI4FE0D8B11F"><span></span></nobr></div>
+</div>
+                    </div>
+
+                        <script>
+                            document.getElementById("printButtonPDF").style.display = "block";
+                        </script>
+<form action="https://receipt.taxcom.ru/v01/show" class="form" method="post" style="max-width: 350px;"><input id="ReceiptId" name="ReceiptId" type="hidden" value="4AC674E0-54EC-4590-82DE-A5F2875760BF"><input data-val="true" data-val-required="The Found field is required." id="Found" name="Found" type="hidden" value="True"><input data-val="true" data-val-maxlength="Слишком длинная строка" data-val-maxlength-max="13" data-val-minlength="Слишком короткая строка" data-val-minlength-min="3" data-val-regex="Допустимы только цифры" data-val-regex-pattern="^\d+" data-val-required="Поле обязательно для заполнения" id="FiscalSign" name="FiscalSign" type="hidden" value="2032263979"><input data-val="true" data-val-maxlength="Слишком длинная строка" data-val-maxlength-max="10" data-val-regex="Допустимы только цифры" data-val-regex-pattern="^\d+" id="DocumentFiscalNumber" name="DocumentFiscalNumber" type="hidden" value="6194"><input data-val="true" data-val-date="The field ReceiptDate must be a date." data-val-required="The ReceiptDate field is required." id="ReceiptDate" name="ReceiptDate" type="hidden" value="04.04.2018 15:31:00">                            <div class="form-group">
+                                <label for="email">Вы можете отправить чек на свой email:</label>
+                                <div class="row">
+                                    <input class="form-control-inline  col-xs-12 col-md-8 col-lg-8" id="email" maxlength="255" name="Email" placeholder="Адрес вашей электронной почты" style="margin-bottom: 10px;" type="text" value="">
+                                    <div class="col-xs-12 col-md-4 col-lg-4">
+                                        <button type="submit" class="btn btn-default  btn-send-slip">
+                                            Отправить
+                                        </button>
+                                    </div>
+                                    <label style="color: red;"></label>
+                                </div>
+                            </div>
+</form>                        <div class="form" style="max-width: 350px;">
+                            <div class="form-group clearfix" style="margin-top: 60px">
+                                <div class="row">
+                                    <button onclick="location.href = &#39;/&#39;" class="btn btn-primary  col-xs-12 col-md-12 col-lg-12">
+                                        Проверить другой чек
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+
+</div><!--/.grid-container-->
+
+<script src="./05.04.2018, logo-taxcom-check_files/ismobile.js.загружено"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(e) {
+        if (isMobile()) document.documentElement.classList.add("mobile");
+    }, false);
+</script>
+
+
+            </div><!--/.wrapper-->
+        </div><!--/.main-->
+    
+        <footer class="footer" id="footer_no_print">
+            <div class="wrapper">
+                <div class="grid-container justify-container">
+                    <div class="footer-cont-1 justify-item">
+                        <div class="footer-logo">
+                            <a href="http://taxcom.ru/" target="_blank"><img src="./05.04.2018, logo-taxcom-check_files/logo-taxcom-2.png" width="55" height="22" alt="Такском"></a>
+                        </div>
+                        <div class="colophon">
+                            <div class="copyright">2016 - 2018 © ООО «Такском»</div>
+                            <div class="version">Версия 1.1</div>
+                        </div>
+                    </div>
+                    <div class="footer-menu justify-item">
+                        <ul>
+                            <li><a href="http://kkt-taxcom.ru/" target="_blank">Помощь</a></li>
+                            <li><a href="http://kkt-taxcom.ru/" target="_blank">О сервисе</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+
+
+<script>
+    if ($('#about_serv').length == 0) {
+        $('#footer_no_print').hide();
+    }
+</script>
+
+</body></html>

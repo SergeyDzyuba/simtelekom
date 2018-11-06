@@ -1,0 +1,4 @@
+<?php
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_CCU_AGENTS_TASKS_FROM_TASKS_TITLE'] = 'Задачи';
+$mod_strings['LBL_CCU_AGENTS_CCU_AGENT_DOC_FROM_CCU_AGENT_DOC_TITLE'] = 'Документы операторов';

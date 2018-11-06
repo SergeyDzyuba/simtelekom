@@ -1,0 +1,33 @@
+/*
+*	by Kolerts
+*/ 
+
+.kPopup{
+	display:none;
+	position:fixed;
+	left:25%;
+	top:10%;
+	max-height: 80%;
+	/*width:50%;*/
+	padding:10px;
+	border:1px solid #ABC3D7;
+	background-color:#FAFAFA;
+	color:#444;
+	
+	-moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5); /* ��� Firefox */
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5); /* ��� Safari � Chrome */
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5); /* ��������� ���� */
+	filter: progid:DXImageTransform.Microsoft.shadow(direction=120, color=#000000, strength=5);/*IE*/
+}
+.kPopup h3{
+	color:#333;
+	text-align:center;
+}
+.kPopup td{
+	background-color:#fff;
+}
+
+#scroll{
+    height: 300px;
+    overflow-y: auto;
+}

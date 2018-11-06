@@ -1,0 +1,9 @@
+Array
+(
+    [passport_data_c] => Array
+        (
+            [cell] => 1 74 03 410714 УВД г. Ноябрьска Oct 3 2003 12:00AM
+            [func] => eq
+        )
+
+)

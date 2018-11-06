@@ -1,0 +1,32 @@
+<?php
+
+$mod_strings = array (
+	'LBL_SEARCH_FORM_TITLE' => 'Поиск лога',
+	'LBL_ASSIGNED_TO_ID' => 'Пользователь',
+	'LBL_ASSIGNED_TO_NAME' => 'Пользователь',
+	'LBL_ID' => 'ID',
+	'LBL_DATE_ENTERED' => 'Дата создания',
+	'LBL_DATE_MODIFIED' => 'Дата изменения',
+	'LBL_MODIFIED' => 'Изменено',
+	'LBL_MODIFIED_ID' => 'Изменено',
+	'LBL_MODIFIED_NAME' => 'Изменено',
+	'LBL_CREATED' => 'Создано',
+	'LBL_CREATED_ID' => 'Создано',
+	'LBL_DESCRIPTION' => 'Номер телефона',
+	'LBL_DELETED' => 'Удалено',
+	'LBL_NAME' => 'Название метода',
+	'LBL_CONTACT_NAME' => 'Контакт',
+	'LBL_CREATED_USER' => 'Создано',
+	'LBL_MODIFIED_USER' => 'Изменено',
+	'LBL_LIST_NAME' => 'Название',
+	'LBL_LIST_FORM_TITLE' => 'Логи доступа к журналам биллинга',
+	'LBL_MODULE_NAME' => 'Логи доступа к журналам биллинга',
+	'LBL_MODULE_TITLE' => 'Логи доступа к журналам биллинга',
+	'LBL_HOMEPAGE_TITLE' => 'Логи доступа к журналам биллинга',
+	'LNK_NEW_RECORD' => 'Создать лог',
+	'LNK_LIST' => 'Логи доступа к журналам биллинга',
+	'LBL_SEARCH_FORM_TITLE' => 'Логи доступа к журналам биллинга',
+	'LBL_HISTORY_SUBPANEL_TITLE' => 'Просмотр истории',
+	'LBL_NEW_FORM_TITLE' => 'Новый лог',
+
+);

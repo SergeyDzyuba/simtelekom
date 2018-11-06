@@ -1,0 +1,5 @@
+<?php
+//THIS FILE IS AUTO GENERATED, DO NOT MODIFY
+$mod_strings['LBL_CCU2_AGENTS2_NOTES_FROM_CCU2_AGENTS2_TITLE'] = 'Сотрудники КЦ';
+$mod_strings['LBL_CCU2_AGENTS3_NOTES_FROM_CCU2_AGENTS3_TITLE'] = 'Операторы КЦ 3';
+$mod_strings['LBL_CCU2_AGENTS3_NOTES_FROM_CCU2_AGENTS31_TITLE'] = 'Операторы КЦ 3';

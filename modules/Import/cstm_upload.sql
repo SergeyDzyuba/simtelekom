@@ -1,0 +1,1 @@
+UPDATE `contacts_cstm` SET  `passport_data_c` = '1 74 03 410714 УВД г. Ноябрьска Oct 3 2003 12:00AM' WHERE `id_c` = '13285f9a-7c33-49bc-ca41-55111ed060cb'

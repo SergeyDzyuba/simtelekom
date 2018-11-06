@@ -1,0 +1,23 @@
+<?php
+ // created: 2016-05-18 14:04:49
+$layout_defs["ps_empl"]["subpanel_setup"]['ps_empl_ps_vacation'] = array (
+  'order' => 100,
+  'module' => 'ps_vacation',
+  'subpanel_name' => 'default',
+  'sort_order' => 'asc',
+  'sort_by' => 'id',
+  'title_key' => 'LBL_PS_EMPL_PS_VACATION_FROM_PS_VACATION_TITLE',
+  'get_subpanel_data' => 'ps_empl_ps_vacation',
+  'top_buttons' => 
+  array (
+    0 => 
+    array (
+      'widget_class' => 'SubPanelTopButtonQuickCreate',
+    ),
+    1 => 
+    array (
+      'widget_class' => 'SubPanelTopSelectButton',
+      'mode' => 'MultiSelect',
+    ),
+  ),
+);
