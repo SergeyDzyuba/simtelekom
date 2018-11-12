@@ -6,8 +6,15 @@ $hook_array = Array();
 // position, file, function 
 $hook_array['before_save'] = Array(); 
 $hook_array['before_save'][] = Array(1, 'Contacts push feed', 'modules/Contacts/SugarFeeds/ContactFeed.php','ContactFeed', 'pushFeed'); 
-$hook_array['after_ui_frame'] = Array(); 
+$hook_array['after_ui_frame'] = Array();
 
+$hook_array['after_save'] = Array();
+$hook_array['after_save'][] = Array(
+    1,
+    'Связь нового контакта со всеми обращениями по номерту телефона',
+    'custom/modules/Contacts/Hooks.php',
+    'LinkContactWithAppeals',
+    'linkContactsWithAppealsByPhone');
 
 
 ?>

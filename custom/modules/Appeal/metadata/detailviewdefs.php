@@ -109,6 +109,15 @@ array (
             'label' => 'LBL_COMMENT',
           ),
         ),
+
+         8 =>
+              array (
+                  0 => 'webim_appeal_source',
+                  1 => array (),
+              ),
+          9 => array(
+              0 => 'webim_appeal_history',
+          ),
       ),
     ),
   ),

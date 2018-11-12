@@ -8,7 +8,7 @@ custom/modulebuilder/*
 custom/working/*
 # Custom configuration should also be ignored.
 /config.php
-# /config_override.php
+/config_override.php
 # The silent upgrade scripts aren't needed.
 silentUpgrade*.php
 # Logs files can safely be ignored.

@@ -1,37 +1,37 @@
 <?php
 $module_name = 'Appeal';
-$viewdefs [$module_name] = 
+$viewdefs [$module_name] =
 array (
-  'EditView' => 
+  'EditView' =>
   array (
-    'templateMeta' => 
+    'templateMeta' =>
     array (
       'maxColumns' => '2',
-      'widths' => 
+      'widths' =>
       array (
-        0 => 
+        0 =>
         array (
           'label' => '10',
           'field' => '30',
         ),
-        1 => 
+        1 =>
         array (
           'label' => '10',
           'field' => '30',
         ),
       ),
       'useTabs' => false,
-      'tabDefs' => 
+      'tabDefs' =>
       array (
-        'DEFAULT' => 
+        'DEFAULT' =>
         array (
           'newTab' => false,
           'panelDefault' => 'expanded',
         ),
       ),
-      'form' => 
+      'form' =>
       array (
-        'hidden' => 
+        'hidden' =>
         array (
           0 => '<input type="hidden" id="source_val" value="{$fields.source.value}">',
           1 => '<input type="hidden" id="type_val" value="{$fields.type.value}">',
@@ -42,87 +42,98 @@ array (
       'javascript' => '{sugar_getscript file="custom/modules/Home/js/linked.js"}
      ',
     ),
-    'panels' => 
+    'panels' =>
     array (
-      'default' => 
+      'default' =>
       array (
-        0 => 
+        0 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'code',
-            'fields' => 
+            'fields' =>
             array (
-              0 => 
+              0 =>
               array (
                 'name' => 'code',
               ),
-              1 => 
+              1 =>
               array (
                 'name' => 'source',
                 'customCode' => 'Источник: @@FIELDS@@',
               ),
-              2 => 
+              2 =>
               array (
                 'name' => 'type',
               ),
-              3 => 
+              3 =>
               array (
                 'name' => 'theme',
               ),
-              4 => 
+              4 =>
               array (
                 'name' => 'subtheme',
               ),
             ),
           ),
         ),
-        1 => 
+        1 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'created_by_name',
             'label' => 'LBL_CREATED',
           ),
         ),
-        2 => 
+        2 =>
         array (
           0 => 'assigned_user_name',
-          1 => 
+          1 =>
           array (
             'name' => 'state',
             'label' => 'LBL_STATE',
           ),
         ),
-        3 => 
+        3 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'date_entered',
             'comment' => 'Date record created',
             'label' => 'LBL_DATE_ENTERED',
           ),
-          1 => 
+          1 =>
           array (
             'name' => 'date_modified',
             'comment' => 'Date record last modified',
             'label' => 'LBL_DATE_MODIFIED',
           ),
         ),
-        4 => 
+        4 =>
         array (
-          0 => 
+          0 =>
           array (
             'name' => 'contact_name',
             'studio' => 'visible',
             'label' => 'LBL_CONTACT_NAME',
           ),
-          1 => 
+          1 =>
           array (
             'name' => 'comment',
             'label' => 'LBL_COMMENT',
           ),
         ),
+          5 =>
+              array (
+                  0 => array('name' => 'webim_appeal_source', 'type' => 'readonly',),
+                  1 => array (),
+              ),
+          6 => array(
+            0 => array(
+                'name' => 'webim_appeal_history',
+//                'type' => 'readonly',
+            ),
+          ),
       ),
     ),
   ),

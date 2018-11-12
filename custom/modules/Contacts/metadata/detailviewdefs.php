@@ -52,6 +52,10 @@ array (
         array (
           'file' => 'modules/Leads/Lead.js',
         ),
+          1 =>
+          array(
+              'file' => 'custom/modules/Contacts/js/AppealSubpanelClickOnCreate.js'
+          ),
       ),
       'useTabs' => false,
       'tabDefs' => 

@@ -49,7 +49,7 @@ class DocumentsViewDetail extends ViewDetail
     	$params = array();
     	$params[] = $this->_getModuleTitleListParam($browserTitle);
     	$params[] = $this->bean->document_name;
-    	
+
 		return $params;
     }
 
@@ -57,7 +57,7 @@ class DocumentsViewDetail extends ViewDetail
  	{
 	//check to see if the file field is empty.  This should not occur and would only happen when an error has ocurred during upload, or from db manipulation of record.
          if(empty($this->bean->filename)){
-	    //print error to screen
+//	    print error to screen
             $this->errors[] = $GLOBALS['mod_strings']['ERR_MISSING_FILE'];
             $this->displayErrors();
          }
