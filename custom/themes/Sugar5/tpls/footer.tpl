@@ -118,7 +118,7 @@
             async: true,
             success: function (data) {
                 console.log(data);
-                if (data !== 'false') {
+                if (data !== 'false' && data !== '') {
                     var rows = JSON.parse(data);
                     console.log(rows);
                     for (var i = 0; i < rows.length; i++) {
