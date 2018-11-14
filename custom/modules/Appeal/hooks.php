@@ -59,7 +59,8 @@ class LinkWithAttachedDocuments{
                 }
                 $appeal->webim_appeal_history = $result['chat_history'];
                 $appeal->webim_appeal_source = $source;
-                $appeal->save();
+//                $appeal->save();
+                $appeal->db->query("UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'");
             }
         }
     }
