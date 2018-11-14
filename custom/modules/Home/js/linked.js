@@ -171,8 +171,8 @@ function getChatHistory(chat_id) {
             if (data !== 'false') {
                     //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
                     // TODO: добавить источник
-                    $('#Default_Appeal_Subpanel #comment').ready(function () {
-                        $('#Default_Appeal_Subpanel #comment').html(data);
+                    $('#Default_Appeal_Subpanel #webim_appeal_history').ready(function () {
+                        $('#Default_Appeal_Subpanel #webim_appeal_history').html(data);
                     });
             }
         }
