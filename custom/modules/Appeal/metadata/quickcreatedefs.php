@@ -96,6 +96,9 @@ $viewdefs[$module_name]['QuickCreate'] = array(
           array('name' => 'webim_appeal_source', 'type' => 'readonly'),
           ''
       ),
+      array(
+          array('name' => 'webim_appeal_history', 'type' => 'readonly'),
+      ),
   ),
 
 ),

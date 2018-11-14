@@ -131,7 +131,7 @@ array (
           6 => array(
             0 => array(
                 'name' => 'webim_appeal_history',
-//                'type' => 'readonly',
+                'type' => 'readonly',
             ),
           ),
       ),
