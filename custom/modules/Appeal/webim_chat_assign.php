@@ -50,14 +50,15 @@ function sendEmailNotification($operator_id = '')
 
     $mail = new SugarPHPMailer();
 // Add details
-    $mail->From = "simsim24h@yandex.ru";
+//    $mail->From = "simsim24h@yandex.ru";
+    $mail->From = "dzyba@sugare.ru";
     $mail->FromName = "SIM-SIM";
 // Clear recipients
     $mail->ClearAllRecipients();
     $mail->ClearReplyTos();
 // Add recipient
 //    $mail->AddAddress('a.beresnev@sim-sim.com', 'A Beresnev');
-    $mail->AddAddress('dzyba@sugare.ru', 'A Beresnev');
+    $mail->AddAddress('qpopuk@yandex.ru', 'A Beresnev');
 // Add subject
     $mail->Subject = "Оповещение от CRM. Не найден оператор в CRM";
 // Add mail content
