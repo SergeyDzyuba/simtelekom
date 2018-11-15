@@ -63,6 +63,7 @@ function decodeHistory($chat_json, $first_client_message = false)
                 $kind = 'Сообщение';
                 break;
         };
+        $message_text = preg_replace('/[\\\\]{1,2}n/','\n',$message_text);
         $history .= $timestamp . '>' . $kind . '>>>' . $message_text . '\n';
         if ($first_client_message && $val['kind'] === 'visitor')
             break;
