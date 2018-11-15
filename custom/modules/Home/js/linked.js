@@ -174,11 +174,41 @@ function getChatHistory(chat_id) {
                     $('#Default_Appeal_Subpanel #webim_appeal_history').ready(function () {
                         $('#Default_Appeal_Subpanel #webim_appeal_history').html(data);
                     });
-                $('#Default_Appeal_Subpanel #webim_appeal_history').html($('#Default_Appeal_Subpanel #webim_appeal_history').html().replace(/\n/g,'<br>'));
+                $('#Default_Appeal_Subpanel #webim_appeal_history').replaceTag('<textarea id="webim_appeal_history" name="webim_appeal_history">',false);
+                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('readonly','readonly');
+                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('rows','15');
+                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('cols','240');
+                // $('#Default_Appeal_Subpanel #webim_appeal_history').html($('#Default_Appeal_Subpanel #webim_appeal_history').html().replace(/\n/g,'<br>'));
             }
         }
     });
 }
+
+$.extend({
+    replaceTag: function (currentElem, newTagObj, keepProps) {
+        var $currentElem = $(currentElem);
+        var i, $newTag = $(newTagObj).clone();
+        if (keepProps) {//{{{
+            newTag = $newTag[0];
+            newTag.className = currentElem.className;
+            $.extend(newTag.classList, currentElem.classList);
+            $.extend(newTag.attributes, currentElem.attributes);
+        }//}}}
+        $currentElem.wrapAll($newTag);
+        $currentElem.contents().unwrap();
+        // return node; (Error spotted by Frank van Luijn)
+        return this; // Suggested by ColeLawrence
+    }
+});
+
+$.fn.extend({
+    replaceTag: function (newTagObj, keepProps) {
+        // "return" suggested by ColeLawrence
+        return this.each(function() {
+            jQuery.replaceTag(this, newTagObj, keepProps);
+        });
+    }
+});
 
 $(document).ready(function () {
     set_options(1);

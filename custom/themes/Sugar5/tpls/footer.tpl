@@ -110,17 +110,16 @@
         YAHOO.util.Event.onContentReady('ajaxUI-history-field', SUGAR.ajaxUI.firstLoad);
 
     setInterval(function () {
-        console.log('tick');
         $.ajax({
             type: "POST",
             datatype: "html",
             url: 'index.php?module=Appeal&action=getTabs&to_pdf=1',
             async: true,
             success: function (data) {
-                console.log(data);
+//                console.log(data);
                 if (data !== 'false' && data !== '') {
                     var rows = JSON.parse(data);
-                    console.log(rows);
+//                    console.log(rows);
                     for (var i = 0; i < rows.length; i++) {
                         var contact_id = rows[i]['contact_id'];
                         var chat_id = rows[i]['chat_id'];
@@ -135,10 +134,6 @@
             }
         })
     }, 5000);//5000
-
-    //    window.location = 'http://localhost/simtelekom/index.php?module=Contacts&action=DetailView&record=1dff4f65-a3d5-673f-e323-57503dfc094a';
-    //$('#contact_appeals_Создать_button').click();
-
 
 </script>
 {/literal}

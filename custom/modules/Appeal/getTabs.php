@@ -13,14 +13,16 @@ if (!empty($current_user->webim_operator_id)) {//если у текущего п
         $upd_result = $db->query($upd_query);
 //        $contact->retrieve_by_string_fields(array('phone_mobile' => $row['client_mobile_phone'], 'deleted' => 0));
         $query_contact = "SELECT id FROM contacts WHERE deleted=0 AND phone_mobile LIKE '%" . $row['client_mobile_phone'] . "' LIMIT 0,1";
-        $result = $db->query($query_contact);
-        $row_contact = $db->fetchByAssoc($result);
-        $row['contact_id'] = $row_contact['id'];
+        if (!empty($row['client_mobile_phone'])) {
+            $result = $db->query($query_contact);
+            $row_contact = $db->fetchByAssoc($result);
+            $row['contact_id'] = $row_contact['id'];
 //            $row['contact_id'] = $contact->id;
-        $row['assigned_user_id'] = $current_user->id;
-        if (isset($row['contact_id']) && !empty($row['contact_id'])) {//если не был найден контакт по номеру телефона
-            // то откроем карточку
-            $heap[] = $row;
+            $row['assigned_user_id'] = $current_user->id;
+            if (isset($row['contact_id']) && !empty($row['contact_id'])) {//если не был найден контакт по номеру телефона
+                // то откроем карточку
+                $heap[] = $row;
+            }
         }
     }
     if (empty($heap) || count($heap) == 0)

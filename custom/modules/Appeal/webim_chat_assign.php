@@ -15,30 +15,29 @@ $str = preg_replace_callback('/[\\\\]*u([0-9a-fA-F]{4})/', function ($match) {
 $_POST['chat'] = $str;
 
 //$response = json_decode(str_replace('&quot;','"',$_POST['chat']),true);
-$response = json_decode($_POST['chat'],true);
+$response = json_decode($_POST['chat'], true);
 
 //$response_json = str_replace('&quot;','"',$_POST['chat']);
 $response_json = $_POST['chat'];
-$chat_history = decodeHistory($response_json,true);
+$chat_history = decodeHistory($response_json, true);
 $chat_id = $response['id'];
 $operator_id = $response['operator']['id'];
 $action = 'operator_assign';
 //$visitor_id = '';
 //$visitor_name = '';
-if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])){
+if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
     $source = $response['visitor']['channel']['type'];
-}
-else{
+} else {
     $source = 'Сайт';
 }
-$visitor_phone = str_replace(array('+7',' ','(',')','-'),'',$response['visitor']['fields']['phone']);
+$visitor_phone = str_replace(array('+7', ' ', '(', ')', '-'), '', $response['visitor']['fields']['phone']);
 $query = "INSERT INTO webim_chat_heap VALUES ('$record_id','$operator_id','$chat_id','$visitor_phone','$date_entered','$date_entered','$response_json','$chat_history','0','$action','0')";
 $result = $db->query($query);
 
 //ищем пользователя в системе по id оператора из webim, если нет, то создаем имейл уведомление
 $user = new User();
 $user->retrieve_by_string_fields(array('webim_operator_id' => $operator_id));
-if (empty($user->id)){
+if (empty($user->id)) {
     sendEmailNotification($operator_id);
 }
 
@@ -51,7 +50,7 @@ function sendEmailNotification($operator_id = '')
     $mail = new SugarPHPMailer();
 // Add details
 //    $mail->From = "simsim24h@yandex.ru";
-    $mail->From = "dzyba@sugare.ru";
+    $mail->From = "chief.for-steam@yandex.ru";
     $mail->FromName = "SIM-SIM";
 // Clear recipients
     $mail->ClearAllRecipients();
@@ -62,7 +61,7 @@ function sendEmailNotification($operator_id = '')
 // Add subject
     $mail->Subject = "Оповещение от CRM. Не найден оператор в CRM";
 // Add mail content
-    $email_text = 'Не удалось идентифицировать оператора <b>' .$operator_id.'</b> в чате';
+    $email_text = 'Не удалось идентифицировать оператора <b>' . $operator_id . '</b> в чате';
     $mail->Body_html = from_html($email_text);
     $mail->Body = wordwrap($email_text, 900);
     $mail->isHTML(true); // set to true if content has html tags

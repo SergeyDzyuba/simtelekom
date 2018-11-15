@@ -39,7 +39,6 @@ if (isset($response['visitor']['channel']['type']) && !empty($response['visitor'
 }
 // добавляем запись о закрытии чата
 $query = "INSERT INTO webim_chat_heap VALUES ('$record_id','$operator_id','$chat_id','$visitor_phone','$date_entered','$date_entered','$response_json','$chat_history','0','$action','0')";
-$GLOBALS['log']->fatal('INSERT query: '.$query);
 $result = $db->query($query);
 //запись о присоединении оператора делаем "обработанной"
 $query = "UPDATE webim_chat_heap SET processed=1 /*AND deleted=1*/ WHERE chat_id='$chat_id' AND deleted=0 AND action='operator_assign'";

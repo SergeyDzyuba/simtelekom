@@ -2,7 +2,8 @@
 
 class AppealHooks
 {
-    function classificator(&$bean){
+    function classificator(&$bean)
+    {
         require_once('custom/modules/Home/utils.php');
         $bean->source = LinkedUtils::detail($bean->source);
         $bean->type = LinkedUtils::detail($bean->type);
@@ -11,30 +12,31 @@ class AppealHooks
     }
 }
 
-class LinkWithAttachedDocuments{
-    function linkWithAttachedDocs($bean, $event, $arguments){
-        if (empty($_REQUEST['record']) && (isset($_REQUEST['webim_appeal_id']) && !empty($_REQUEST['webim_appeal_id']))){//если создается новая запись
+class LinkWithAttachedDocuments
+{
+    function linkWithAttachedDocs($bean, $event, $arguments)
+    {
+        if (empty($_REQUEST['record']) && (isset($_REQUEST['webim_appeal_id']) && !empty($_REQUEST['webim_appeal_id']))) {//если создается новая запись
             /*
              * То проверяем, есть ли в куче "закрытый" чат по id ата из реквеста
              */
             $appeal = new Appeal();
             $appeal->retrieve($bean->id);
-            global $db,$timedate,$current_user;
-            $query = "SELECT * FROM webim_chat_heap WHERE deleted=0 AND 'action'='chat_close' AND chat_id='".$_REQUEST['webim_appeal_id']."' LIMIT 0,1";
+            global $db, $timedate, $current_user;
+            $query = "SELECT * FROM webim_chat_heap WHERE deleted=0 AND 'action'='chat_close' AND chat_id='" . $_REQUEST['webim_appeal_id'] . "' LIMIT 0,1";
             $result = $db->query($query);
             $result = $db->fetchByAssoc($result);
             $response = json_decode($result['response']);
             $docs = array();
             $counter = 0;
-            if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])){
+            if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
                 $source = $response['visitor']['channel']['type'];
-            }
-            else{
+            } else {
                 $source = 'Сайт';
             }
-            foreach ($response['messages'] as $key=>$item) {
-                if (array_key_exists('file_operator',$item) || array_key_exists('file_visitor',$item)){//если есть файлы в очередном сообщении
-                    $file_params = json_decode($item['message'],true);
+            foreach ($response['messages'] as $key => $item) {
+                if (array_key_exists('file_operator', $item) || array_key_exists('file_visitor', $item)) {//если есть файлы в очередном сообщении
+                    $file_params = json_decode($item['message'], true);
                     //filename, content_type, guid
                     $docs[$counter]['filename'] = $file_params['filename'];
                     $docs[$counter]['file_guid'] = $file_params['guid'];
@@ -42,7 +44,7 @@ class LinkWithAttachedDocuments{
                     $docs[$counter]['file_source'] = $item['kind'];//file_visitor OR file_operator
                     $docs[$counter]['file_timestamp'] = $item['created_at'];
                     $account_name = 'suitecrmdemosugarerui';
-                    $docs[$counter]['file_url'] = 'https://'.$account_name.'.webim.ru/l/o/download/'.$file_params['guid'].'/'.$file_params['filename'];//исправить на что-то универсальное
+                    $docs[$counter]['file_url'] = 'https://' . $account_name . '.webim.ru/l/o/download/' . $file_params['guid'] . '/' . $file_params['filename'];//исправить на что-то универсальное
                     $counter++;
                 }
             }
@@ -52,7 +54,7 @@ class LinkWithAttachedDocuments{
                 $document = new Document();
                 foreach ($doc_ids as $item) {
                     $document->retrieve($item);
-                    if (!empty($document->id)){
+                    if (!empty($document->id)) {
                         $document->created_by = '1';
                         $document->assigned_user_id = '1';
                         $document->modified_user_id = '1';
@@ -60,10 +62,20 @@ class LinkWithAttachedDocuments{
                         $document->save();
                     }
                 }
-                $appeal->webim_appeal_history = $result['chat_history'];
-                $appeal->webim_appeal_source = $source;
-//                $appeal->save();
-                $appeal->db->query("UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'");
+                $query = "UPDATE {$appeal->table_name} SET   ";
+                $set_params = array();
+                if (!empty($result['chat_history']))
+                    $set_params[] = "webim_appeal_history='{$result['chat_history']}'";
+//                    $appeal->webim_appeal_history = $result['chat_history'];
+                if (!empty($source))
+                    $set_params[] = "webim_appeal_source='{$source}'";
+                $query .= join('AND', $set_params);
+                $query .= " WHERE id='{$appeal->id}'";
+//                    $appeal->webim_appeal_source = $source;
+//                $query = "UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'";
+                $GLOBALS['log']->fatal('APPEAL QUERY: '.$query);
+                if (!empty($set_params))
+                    $appeal->db->query($query);
             }
         }
     }
