@@ -167,10 +167,9 @@ function getChatHistory(chat_id) {
 //    data: {operator_id: parent_process_id},
         async: true,
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data !== 'false') {
                     //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
-                    // TODO: добавить источник
                     $('#Default_Appeal_Subpanel #webim_appeal_history').ready(function () {
                         $('#Default_Appeal_Subpanel #webim_appeal_history').html(data);
                     });
@@ -179,6 +178,24 @@ function getChatHistory(chat_id) {
                 $('#Default_Appeal_Subpanel #webim_appeal_history').attr('rows','15');
                 $('#Default_Appeal_Subpanel #webim_appeal_history').attr('cols','240');
                 // $('#Default_Appeal_Subpanel #webim_appeal_history').html($('#Default_Appeal_Subpanel #webim_appeal_history').html().replace(/\n/g,'<br>'));
+            }
+        }
+    });
+}
+
+function getChatSource(chat_id) {
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        url: 'index.php?module=Appeal&action=getChatSource&to_pdf=1&chat_id='+chat_id,
+//    data: {operator_id: parent_process_id},
+        async: true,
+        success: function (data) {
+            if (data !== 'false') {
+                //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
+                $('#Default_Appeal_Subpanel #webim_appeal_source').replaceTag('<input id="webim_appeal_source" name="webim_appeal_source">',false);
+                $('#Default_Appeal_Subpanel #webim_appeal_source').attr('readonly','readonly');
+                $('#Default_Appeal_Subpanel #webim_appeal_source').attr('value',data);
             }
         }
     });
@@ -243,8 +260,8 @@ $(document).ready(function () {
     if (typeof request_params['chat_id'] !== 'undefined') {
         var chat_id = request_params['chat_id'];
         getChatHistory(chat_id);
+        getChatSource(chat_id);
         //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
-        // TODO: добавить источник
         $('#Default_Appeal_Subpanel #comment').ready(function () {
             $('#Default_Appeal_Subpanel #comment').parent().append('<input type="hidden" name="webim_appeal_id" id="webim_appeal_id" value="' + chat_id + '">');
         });
@@ -253,7 +270,6 @@ $(document).ready(function () {
     if (typeof request_params['phone'] !== 'undefined') {
         var phone = request_params['phone'];
         //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
-        // TODO: добавить источник
         $('#Default_Appeal_Subpanel #comment').ready(function () {
             $('#Default_Appeal_Subpanel #comment').parent().append('<input type="hidden" name="contact_phone" id="contact_phone" value="' + phone + '">');
         });
