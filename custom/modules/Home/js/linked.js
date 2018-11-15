@@ -174,6 +174,7 @@ function getChatHistory(chat_id) {
                     $('#Default_Appeal_Subpanel #webim_appeal_history').ready(function () {
                         $('#Default_Appeal_Subpanel #webim_appeal_history').html(data);
                     });
+                $('#Default_Appeal_Subpanel #webim_appeal_history').html($('#Default_Appeal_Subpanel #webim_appeal_history').html().replace(/\n/g,'<br>'));
             }
         }
     });

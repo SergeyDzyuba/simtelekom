@@ -1,6 +1,6 @@
 <?php
-//$GLOBALS['log']->fatal('Chat close:');
-//$GLOBALS['log']->fatal($_POST);
+$GLOBALS['log']->fatal('Chat close:');
+$GLOBALS['log']->fatal($_POST);
 /*TODO:
 *  1. добавить проверку на наличие в базе обработанной или удаленной какой-либо??? записи
 *     если есть, то обновляем данные, иначе - делаем вставку новой строки???
@@ -8,13 +8,14 @@
  * 3.
 */
 global $db, $timedate, $current_user;
+//$user = BeanFactory::getBean('Users', $current_user->id);
 //header('Content-Type: application/json; charset=utf-8');
 $date_entered = $timedate->nowDb();
 //$date_modified = '';
 $record_id = create_guid();
 
 $str = html_entity_decode($_POST['chat']);
-$str = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($match) {
+$str = preg_replace_callback('/[\\\\]*u([0-9a-fA-F]{4})/', function ($match) {
     return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
 }, $str);
 $_POST['chat'] = $str;
@@ -38,6 +39,7 @@ if (isset($response['visitor']['channel']['type']) && !empty($response['visitor'
 }
 // добавляем запись о закрытии чата
 $query = "INSERT INTO webim_chat_heap VALUES ('$record_id','$operator_id','$chat_id','$visitor_phone','$date_entered','$date_entered','$response_json','$chat_history','0','$action','0')";
+$GLOBALS['log']->fatal('INSERT query: '.$query);
 $result = $db->query($query);
 //запись о присоединении оператора делаем "обработанной"
 $query = "UPDATE webim_chat_heap SET processed=1 /*AND deleted=1*/ WHERE chat_id='$chat_id' AND deleted=0 AND action='operator_assign'";
@@ -49,7 +51,7 @@ $result = $db->query($query);
 $docs = array();
 $counter = 0;
 foreach ($response['messages'] as $key => $item) {
-    if (array_key_exists('file_operator', $item) || array_key_exists('file_visitor', $item)) {//если есть файлы в очередном сообщении
+    if ($item['kind'] === 'file_operator' || $item['kind'] === 'file_visitor') {//если есть файлы в очередном сообщении
         $file_params = json_decode($item['message'], true);
         //filename, content_type, guid
         $docs[$counter]['filename'] = $file_params['filename'];
@@ -70,9 +72,9 @@ foreach ($docs as $item) {
     $docRev = new DocumentRevision();
     $doc->date_entered = $timedate->nowDb();
     $doc->date_modified = $timedate->nowDb();
-    $doc->assigned_user_id = $current_user->id;
-    $doc->modified_user_id = $current_user->id;
-    $doc->created_by = $current_user->id;
+    $doc->assigned_user_id = '1';
+    $doc->modified_user_id = '1';
+    $doc->created_by = '1';
     $doc->description = '';
     $doc->document_name = $item['filename'];
     $doc->doc_id = $item['file_guid'];
@@ -92,7 +94,7 @@ foreach ($docs as $item) {
     $docRev->doc_url = $item['file_url'];
     $docRev->date_entered = $timedate->nowDb();
     $docRev->date_modified = $timedate->nowDb();
-    $docRev->created_by = $current_user->id;
+    $docRev->created_by = '1';
     $buf = explode('.', $item['filename']);
     $docRev->filename = $item['filename'];
     $docRev->file_ext = $buf[count($buf) - 1];
@@ -134,8 +136,8 @@ if (!empty($appeal->id)) {//связываем обращения с докум�
 elseif (isset($row_contact['id']) && !empty($row_contact['id'])) {
     $appeal->date_entered = $timedate->nowDb();
     $appeal->date_modified = $timedate->nowDb();
-    $appeal->modified_user_id = $current_user->id;
-    $appeal->created_by = $current_user->id;
+    $appeal->modified_user_id = '1';
+    $appeal->created_by = '1';
     $appeal->source = '656';
     $appeal->type = '657';
     $appeal->theme = '658';

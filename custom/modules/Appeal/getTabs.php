@@ -12,7 +12,7 @@ if (!empty($current_user->webim_operator_id)) {//если у текущего п
         $upd_query = "UPDATE webim_chat_heap  SET processed='1' WHERE id='{$row['id']}'";
         $upd_result = $db->query($upd_query);
 //        $contact->retrieve_by_string_fields(array('phone_mobile' => $row['client_mobile_phone'], 'deleted' => 0));
-        $query_contact = "SELECT id FROM contacts WHERE deleted=0 AND phone_mobile LIKE '%" . $visitor_phone . "' LIMIT 0,1";
+        $query_contact = "SELECT id FROM contacts WHERE deleted=0 AND phone_mobile LIKE '%" . $row['client_mobile_phone'] . "' LIMIT 0,1";
         $result = $db->query($query_contact);
         $row_contact = $db->fetchByAssoc($result);
         $row['contact_id'] = $row_contact['id'];

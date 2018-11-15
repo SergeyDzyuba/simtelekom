@@ -2,13 +2,13 @@
 
 class AppealHooks
 {
-	function classificator(&$bean){
-		require_once('custom/modules/Home/utils.php');
-		$bean->source = LinkedUtils::detail($bean->source);
-		$bean->type = LinkedUtils::detail($bean->type);
-		$bean->theme = LinkedUtils::detail($bean->theme);
-		$bean->subtheme = LinkedUtils::detail($bean->subtheme);
-	}
+    function classificator(&$bean){
+        require_once('custom/modules/Home/utils.php');
+        $bean->source = LinkedUtils::detail($bean->source);
+        $bean->type = LinkedUtils::detail($bean->type);
+        $bean->theme = LinkedUtils::detail($bean->theme);
+        $bean->subtheme = LinkedUtils::detail($bean->subtheme);
+    }
 }
 
 class LinkWithAttachedDocuments{
@@ -53,6 +53,9 @@ class LinkWithAttachedDocuments{
                 foreach ($doc_ids as $item) {
                     $document->retrieve($item);
                     if (!empty($document->id)){
+                        $document->created_by = '1';
+                        $document->assigned_user_id = '1';
+                        $document->modified_user_id = '1';
                         $document->appeal_id = $appeal->id;
                         $document->save();
                     }
