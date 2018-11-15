@@ -9,12 +9,11 @@ function decodeHistory($chat_json, $first_client_message = false)
         $date = new DateTime($time_from_response);
         $date->add(new DateInterval('PT3H'));
         $timestamp = $date->format('Y-m-d H:i:s');
-        if ($val['kind'] === 'file_visitor' || $val['kind'] === 'file_operator'){
-            $file_params = json_decode($val['message'],true);
+        if ($val['kind'] === 'file_visitor' || $val['kind'] === 'file_operator') {
+            $file_params = json_decode($val['message'], true);
 
-            $message_text = 'Передан файл '.$file_params['filename'];
-        }
-        else {
+            $message_text = 'Передан файл ' . $file_params['filename'];
+        } else {
             $message_text = str_replace('\n', '\n\t\t', $val['message']); //или &nbsp;
         }
         /*        visitor
@@ -63,8 +62,8 @@ function decodeHistory($chat_json, $first_client_message = false)
                 $kind = 'Сообщение';
                 break;
         };
-        $message_text = preg_replace('/[\\\\]{1,2}n/','\n',$message_text);
-        $history .= $timestamp . '>' . $kind . '>>>' . $message_text . '\n';
+        $message_text = preg_replace('/[\\\\]{1,2}n/', PHP_EOL, $message_text);
+        $history .= $timestamp . '>' . $kind . '>>>' . $message_text . PHP_EOL;
         if ($first_client_message && $val['kind'] === 'visitor')
             break;
     }

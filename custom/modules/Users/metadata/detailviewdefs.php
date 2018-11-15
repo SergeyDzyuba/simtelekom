@@ -68,6 +68,7 @@ $viewdefs['Users']['DetailView'] = array(
             array('address_state','address_postalcode'),
             array('address_country'),
             array('description'),
+            array('webim_operator_id',''),
         ),
     ),
 );
