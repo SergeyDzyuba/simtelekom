@@ -16,7 +16,7 @@ if (isset($_REQUEST['chat_id']) && !empty($_REQUEST['chat_id'])) {//если в 
     if (isset($row) && !empty($row['response'])) {
 //        $chat = decodeHistory($row['response'], $first_mess);
         $chat = $row['chat_history'];
-        $chat = preg_replace('/[\\\\]{1,2}n/','',$chat);
+        $chat = preg_replace('/[\\\\]{1,2}n/','<br>',$chat);
         echo $chat;
     } else 'false';
 

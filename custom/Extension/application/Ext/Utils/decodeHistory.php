@@ -15,7 +15,7 @@ function decodeHistory($chat_json, $first_client_message = false)
             $message_text = 'Передан файл '.$file_params['filename'];
         }
         else {
-            $message_text = str_replace('\n', '\n\t\t', $val['message']); //или &nbsp;
+            $message_text = str_replace('\n', '\n&nbsp;&nbsp;&nbsp', $val['message']); //или &nbsp;
         }
         /*        visitor
         for_operator +
@@ -64,6 +64,7 @@ function decodeHistory($chat_json, $first_client_message = false)
                 break;
         };
         $history .= $timestamp . '>' . $kind . '>>>' . $message_text . '\n';
+        $history  = str_replace('\n','<br>',$history);
         if ($first_client_message && $val['kind'] === 'visitor')
             break;
     }
