@@ -18,7 +18,7 @@ class LinkWithAttachedDocuments
     {
         if (empty($_REQUEST['record']) && (isset($_REQUEST['webim_appeal_id']) && !empty($_REQUEST['webim_appeal_id']))) {//если создается новая запись
             /*
-             * То проверяем, есть ли в куче "закрытый" чат по id ата из реквеста
+             * То проверяем, есть ли в куче "закрытый" чат по id чата из реквеста
              */
             $appeal = new Appeal();
             $appeal->retrieve($bean->id);
@@ -43,7 +43,7 @@ class LinkWithAttachedDocuments
                     $docs[$counter]['file_content_type'] = $file_params['content_type'];
                     $docs[$counter]['file_source'] = $item['kind'];//file_visitor OR file_operator
                     $docs[$counter]['file_timestamp'] = $item['created_at'];
-                    $account_name = 'suitecrmdemosugarerui';
+                    $account_name = 'simsimcom';
                     $docs[$counter]['file_url'] = 'https://' . $account_name . '.webim.ru/l/o/download/' . $file_params['guid'] . '/' . $file_params['filename'];//исправить на что-то универсальное
                     $counter++;
                 }
@@ -62,7 +62,7 @@ class LinkWithAttachedDocuments
                         $document->save();
                     }
                 }
-                $query = "UPDATE {$appeal->table_name} SET   ";
+                $query = "UPDATE {$appeal->table_name} SET ";
                 $set_params = array();
                 if (!empty($result['chat_history']))
                     $set_params[] = "webim_appeal_history='{$result['chat_history']}'";
@@ -73,7 +73,7 @@ class LinkWithAttachedDocuments
                 $query .= " WHERE id='{$appeal->id}'";
 //                    $appeal->webim_appeal_source = $source;
 //                $query = "UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'";
-                $GLOBALS['log']->fatal('APPEAL QUERY: '.$query);
+                $GLOBALS['log']->fatal('APPEAL QUERY: ' . $query);
                 if (!empty($set_params))
                     $appeal->db->query($query);
             }

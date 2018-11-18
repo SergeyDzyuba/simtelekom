@@ -29,13 +29,13 @@ function decodeHistory($chat_json, $first_client_message = false)
         */
         switch ($val['kind']) {
             case 'visitor':
-                $kind = 'Клиент';
+                $kind = 'Поеститель';
                 break;
             case 'for_operator':
                 $kind = 'Инфо для оператора';
                 break;
             case 'info':
-                $kind = 'Инфо для клиента';
+                $kind = 'Инфо для посетителя';
                 break;
             case 'operator':
                 $kind = 'Оператор';
@@ -44,7 +44,7 @@ function decodeHistory($chat_json, $first_client_message = false)
                 $kind = 'Оператор отправил файл';
                 break;
             case 'file_visitor':
-                $kind = 'Оператор отправил файл';
+                $kind = 'Посетитель отправил файл';
                 break;
             case 'events':
                 $kind = 'Событие';
