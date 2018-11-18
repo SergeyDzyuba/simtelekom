@@ -29,7 +29,7 @@ function decodeHistory($chat_json, $first_client_message = false)
         */
         switch ($val['kind']) {
             case 'visitor':
-                $kind = 'Поеститель';
+                $kind = 'Посетитель';
                 break;
             case 'for_operator':
                 $kind = 'Инфо для оператора';
