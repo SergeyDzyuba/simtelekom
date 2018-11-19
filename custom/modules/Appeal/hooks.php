@@ -51,15 +51,17 @@ class LinkWithAttachedDocuments
 //сформировали массив доков, создаем сущности в модуле  и связываем их c обращением
             $doc_ids = array();
             if (!empty($appeal->id)) {//связываем обращения с документами
-                $document = new Document();
-                foreach ($doc_ids as $item) {
-                    $document->retrieve($item);
-                    if (!empty($document->id)) {
-                        $document->created_by = '1';
-                        $document->assigned_user_id = '1';
-                        $document->modified_user_id = '1';
-                        $document->appeal_id = $appeal->id;
-                        $document->save();
+                if (!empty($doc_ids)) {
+                    $document = new Document();
+                    foreach ($doc_ids as $item) {
+                        $document->retrieve($item);
+                        if (!empty($document->id)) {
+                            $document->created_by = '1';
+                            $document->assigned_user_id = '1';
+                            $document->modified_user_id = '1';
+                            $document->appeal_id = $appeal->id;
+                            $document->save();
+                        }
                     }
                 }
                 $query = "UPDATE {$appeal->table_name} SET ";

@@ -163,20 +163,20 @@ function getChatHistory(chat_id) {
     $.ajax({
         type: "POST",
         datatype: "html",
-        url: 'index.php?module=Appeal&action=getChatHistory&to_pdf=1&first_message=1&chat_id='+chat_id,
+        url: 'index.php?module=Appeal&action=getChatHistory&to_pdf=1&first_message=1&chat_id=' + chat_id,
 //    data: {operator_id: parent_process_id},
         async: true,
         success: function (data) {
             // console.log(data);
             if (data !== 'false') {
-                    //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
-                    $('#Default_Appeal_Subpanel #webim_appeal_history').ready(function () {
-                        $('#Default_Appeal_Subpanel #webim_appeal_history').html(data);
-                    });
-                $('#Default_Appeal_Subpanel #webim_appeal_history').replaceTag('<textarea id="webim_appeal_history" name="webim_appeal_history">',false);
-                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('readonly','readonly');
-                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('rows','15');
-                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('cols','240');
+                //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
+                $('#Default_Appeal_Subpanel #webim_appeal_history').ready(function () {
+                    $('#Default_Appeal_Subpanel #webim_appeal_history').html(data);
+                });
+                $('#Default_Appeal_Subpanel #webim_appeal_history').replaceTag('<textarea id="webim_appeal_history" name="webim_appeal_history">', false);
+                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('readonly', 'readonly');
+                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('rows', '15');
+                $('#Default_Appeal_Subpanel #webim_appeal_history').attr('cols', '240');
                 // $('#Default_Appeal_Subpanel #webim_appeal_history').html($('#Default_Appeal_Subpanel #webim_appeal_history').html().replace(/\n/g,'<br>'));
             }
         }
@@ -187,15 +187,19 @@ function getChatSource(chat_id) {
     $.ajax({
         type: "POST",
         datatype: "html",
-        url: 'index.php?module=Appeal&action=getChatSource&to_pdf=1&chat_id='+chat_id,
+        url: 'index.php?module=Appeal&action=getChatSource&to_pdf=1&chat_id=' + chat_id,
 //    data: {operator_id: parent_process_id},
         async: true,
         success: function (data) {
             if (data !== 'false') {
                 //<input type="hidden" name="contact_id" id="contact_id" value="1dff4f65-a3d5-673f-e323-57503dfc094a">
-                $('#Default_Appeal_Subpanel #webim_appeal_source').replaceTag('<input id="webim_appeal_source" name="webim_appeal_source">',false);
-                $('#Default_Appeal_Subpanel #webim_appeal_source').attr('readonly','readonly');
-                $('#Default_Appeal_Subpanel #webim_appeal_source').attr('value',data);
+                $('#Default_Appeal_Subpanel #webim_appeal_source').replaceTag('<input id="webim_appeal_source" name="webim_appeal_source">', false);
+                $('#Default_Appeal_Subpanel #webim_appeal_source').attr('readonly', 'readonly');
+                $('#Default_Appeal_Subpanel #webim_appeal_source').attr('value', data);
+                var source_code = $('#Default_Appeal_Subpanel #source option:contains("' + data + '")').val();
+                if (typeof source_code !== 'undefined' && source_code.length>1)
+                    $('#Default_Appeal_Subpanel #source').val(source_code);
+
             }
         }
     });
@@ -221,7 +225,7 @@ $.extend({
 $.fn.extend({
     replaceTag: function (newTagObj, keepProps) {
         // "return" suggested by ColeLawrence
-        return this.each(function() {
+        return this.each(function () {
             jQuery.replaceTag(this, newTagObj, keepProps);
         });
     }
