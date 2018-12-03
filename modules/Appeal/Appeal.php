@@ -38,7 +38,7 @@ class Appeal extends Appeal_sugar {
         $ori_in_workflow = empty($this->in_workflow) ? false : true;
         $this->emailAddress->handleLegacySave($this, $this->module_dir);
 
-        parent::save($check_notify);
+        $id = parent::save($check_notify);
         $db = DBManagerFactory::getInstance();
         $override_email = array();
         if(!empty($this->email1_set_in_workflow)) {
@@ -53,7 +53,7 @@ class Appeal extends Appeal_sugar {
         if($ori_in_workflow === false || !empty($override_email)){
             $this->emailAddress->save($this->id, $this->module_dir, $override_email,'','','','',$this->in_workflow);
         }
-
+        return $id;
     }
 
 

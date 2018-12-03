@@ -53,13 +53,13 @@ if (isset($response['visitor']['channel']['type']) && !empty($response['visitor'
 }
 switch ($source) {
     case 'mobile':
-        echo 'Чат в мобильном приложении';
+        $source= 'Чат в мобильном приложении';
         break;
     case 'site':
-        echo 'Чат на сайте';
+        $source= 'Чат на сайте';
         break;
     default:
-        echo ucfirst($source);
+        $source= ucfirst($source);
         break;
 }
 
@@ -67,7 +67,7 @@ switch ($source) {
 $query = "INSERT INTO webim_chat_heap VALUES ('$record_id','$operator_id','$chat_id','$visitor_phone','$date_entered','$date_entered','$response_json','$chat_history','0','$action','0')";
 $result = $db->query($query);
 //запись о присоединении оператора делаем "обработанной"
-$query = "UPDATE webim_chat_heap SET processed=1 /*AND deleted=1*/ WHERE chat_id='$chat_id' AND deleted=0 AND action='operator_assign'";
+$query = "UPDATE webim_chat_heap SET processed=1 WHERE chat_id='$chat_id' AND deleted=0 AND action='operator_assign'";
 $result = $db->query($query);
 /*
  * TODO:
@@ -156,7 +156,8 @@ if (!empty($appeal->id)) {//связываем обращения с докум�
     }
     $appeal->webim_appeal_history = $chat_history;
     $appeal->webim_appeal_source = $source;
-    $appeal->save();
+    $appeal_id=$appeal->save();
+
 } //если обращения еще нет в системе, у оператора нет id из webim и найден контакт по номеру телефона
 elseif (isset($row_contact['id']) && !empty($row_contact['id'])) {
     $appeal->date_entered = $timedate->nowDb();
@@ -173,5 +174,14 @@ elseif (isset($row_contact['id']) && !empty($row_contact['id'])) {
     $appeal->contact_phone = $visitor_phone;
     $appeal->webim_appeal_source = $source;
     $appeal->webim_appeal_history = $chat_history;
-    $appeal->save();
+    $appeal_id=$appeal->save();
+}
+if (isset($appeal_id) && !empty($appeal_id) && strlen($appeal_id)>1){
+    $query = "UPDATE webim_chat_heap SET processed='{$appeal_id}' WHERE chat_id='$chat_id' AND deleted=0 AND action='chat_close'";
+    $result = $db->query($query);
+    $doc_ids_string = "'".join("', '",$a)."'";
+    $query = "UPDATE documents SET appeal_id='{$appeal_id}' WHERE id IN(".$doc_ids_string.")";
+    $GLOBALS['log']->fatal($query);
+    $result = $db->query($query);
+
 }

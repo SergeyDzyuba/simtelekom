@@ -46,13 +46,13 @@ if (isset($response['visitor']['channel']['type']) && !empty($response['visitor'
 }
 switch ($source) {
     case 'mobile':
-        echo 'Чат в мобильном приложении';
+        $source= 'Чат в мобильном приложении';
         break;
     case 'site':
-        echo 'Чат на сайте';
+        $source= 'Чат на сайте';
         break;
     default:
-        echo ucfirst($source);
+        $source= ucfirst($source);
         break;
 }
 

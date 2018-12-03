@@ -23,7 +23,7 @@ class LinkWithAttachedDocuments
             $appeal = new Appeal();
             $appeal->retrieve($bean->id);
             global $db, $timedate, $current_user;
-            $query = "SELECT * FROM webim_chat_heap WHERE deleted=0 AND `action`='chat_close' AND chat_id='" . $_REQUEST['webim_appeal_id'] . "' ORDER BY `date_entered` DESC LIMIT 0,1";
+            $query = "SELECT * FROM webim_chat_heap WHERE deleted<>1 AND `action`='chat_close' AND chat_id='" . $_REQUEST['webim_appeal_id'] . "' ORDER BY `date_entered` DESC LIMIT 0,1";
             $result = $db->query($query);
             $result = $db->fetchByAssoc($result);
             $response = json_decode($result['response']);
@@ -35,10 +35,9 @@ class LinkWithAttachedDocuments
 //                $source = 'Сайт';
 //            }
             if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
-                if ($response['visitor']['channel']['type']==='custom'){
+                if ($response['visitor']['channel']['type'] === 'custom') {
                     $source = $response['visitor']['fields']['info'];
-                }
-                else {
+                } else {
                     $source = $response['visitor']['channel']['type'];
                 }
             } else {
@@ -49,13 +48,13 @@ class LinkWithAttachedDocuments
             }
             switch ($source) {
                 case 'mobile':
-                    echo 'Чат в мобильном приложении';
+                    $source= 'Чат в мобильном приложении';
                     break;
                 case 'site':
-                    echo 'Чат на сайте';
+                    $source= 'Чат на сайте';
                     break;
                 default:
-                    echo ucfirst($source);
+                    $source= ucfirst($source);
                     break;
             }
 
@@ -75,7 +74,8 @@ class LinkWithAttachedDocuments
             }
 //сформировали массив доков, создаем сущности в модуле  и связываем их c обращением
             $doc_ids = array();
-            if (!empty($appeal->id)) {//связываем обращения с документами
+//            if (!empty($appeal->id)) {//связываем обращения с документами
+            if (!empty($result['processed']) && strlen($result['processed']) > 1)
                 if (!empty($doc_ids)) {
                     $document = new Document();
                     foreach ($doc_ids as $item) {
@@ -84,30 +84,38 @@ class LinkWithAttachedDocuments
                             $document->created_by = '1';
                             $document->assigned_user_id = '1';
                             $document->modified_user_id = '1';
-                            $document->appeal_id = $appeal->id;
+//                            $document->appeal_id = $appeal->id;
+                            $document->appeal_id = $result['processed'];
                             $document->save();
                         }
                     }
                 }
-                $query = "UPDATE {$appeal->table_name} SET ";
-                $set_params = array();
-                if (!empty($result['chat_history']))
-                    $set_params[] = "webim_appeal_history='{$result['chat_history']}'";
+            $query = "UPDATE {$appeal->table_name} SET ";
+            $set_params = array();
+            if (!empty($result['chat_history']))
+                $set_params[] = "webim_appeal_history='{$result['chat_history']}'";
 //                    $appeal->webim_appeal_history = $result['chat_history'];
-                if (!empty($source))
-                    $set_params[] = "webim_appeal_source='{$source}'";
-                $query .= join(' , ', $set_params);
-                $query .= " WHERE id='{$appeal->id}'";
-                $GLOBALS['log']->fatal('set_params=');
-                $GLOBALS['log']->fatal($set_params);
-                $GLOBALS['log']->fatal('query=');
-                $GLOBALS['log']->fatal($query);
+            if (!empty($source))
+                $set_params[] = "webim_appeal_source='{$source}'";
+            $set_params[] = "source='{$bean->source}'";
+            $set_params[] = "type='{$bean->type}'";
+            $set_params[] = "theme='{$bean->theme}'";
+            $set_params[] = "state='{$bean->state}'";
+            $set_params[] = "subtheme='{$bean->subtheme}'";
+            $set_params[] = "comment='{$bean->comment}'";
+            $set_params[] = "contact_id='{$bean->contact_id}'";
+            $set_params[] = "webim_appeal_id='{$bean->webim_appeal_id}'";
+            $set_params[] = "contact_phone='{$bean->contact_phone}'";
+            $set_params[] = "assigned_user_id='{$bean->assigned_user_id}'";
+            $set_params[] = "webim_appeal_source='{$bean->webim_appeal_source}'";
+            $query .= join(' , ', $set_params);
+            $query .= " WHERE id='{$result['processed']}' AND deleted=0";
 //                    $appeal->webim_appeal_source = $source;
 //                $query = "UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'";
-                if (!empty($set_params))
-                    $appeal->db->query($query);
-                    $mark_daleted_q = "UPDATE appeal SET deleted=1 WHERE id='$bean->id'";
-                    $appeal->db->query($mark_daleted_q);
+            if (!empty($set_params) && (isset($result['processed'])) && strlen($result['processed'])>1) {
+                $mark_daleted_q = "UPDATE appeal SET deleted=1 WHERE id='$bean->id'";
+                $appeal->db->query($mark_daleted_q);
+                $appeal->db->query($query);
             }
         }
     }

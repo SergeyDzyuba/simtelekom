@@ -10,7 +10,7 @@ $dictionary['webim_chat_heap'] = array(
     , array('name' => 'date_modified', 'type' => 'datetime')
     , array('name' => 'response', 'type' => 'longtext', 'default' => 'NULL')
     , array('name' => 'chat_history', 'type' => 'longtext', 'default' => 'NULL')
-    , array('name' => 'processed', 'type' => 'bool', 'len' => '1', 'default' => '0', 'required' => false)
+    , array('name' => 'processed', 'type' => 'varchar', 'len' => '36', 'default' => '0', 'required' => false)
     , array('name' => 'action', 'type' => 'varchar', 'len' => '255',)
     , array('name' => 'deleted', 'type' => 'bool', 'len' => '1', 'default' => '0', 'required' => false)
     ),
