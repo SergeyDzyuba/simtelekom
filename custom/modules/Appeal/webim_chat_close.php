@@ -32,11 +32,37 @@ $chat_history = decodeHistory($response_json);
 //$visitor_name = '';
 
 $visitor_phone = str_replace(array('+7', ' ', '(', ')', '-'), '', $response['visitor']['fields']['phone']);
+//if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
+//    $source = $response['visitor']['channel']['type'];
+//} else {
+//    $source = 'Сайт';
+//}
+
 if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
-    $source = $response['visitor']['channel']['type'];
+    if ($response['visitor']['channel']['type']==='custom'){
+        $source = $response['visitor']['fields']['info'];
+    }
+    else {
+        $source = $response['visitor']['channel']['type'];
+    }
 } else {
-    $source = 'Сайт';
+    if (empty($response['start_page']['url']) && strpos($response['messages'][0]['message'], 'Браузер: Android')) {
+        $source = 'mobile';
+    } else
+        $source = 'site';
 }
+switch ($source) {
+    case 'mobile':
+        echo 'Чат в мобильном приложении';
+        break;
+    case 'site':
+        echo 'Чат на сайте';
+        break;
+    default:
+        echo ucfirst($source);
+        break;
+}
+
 // добавляем запись о закрытии чата
 $query = "INSERT INTO webim_chat_heap VALUES ('$record_id','$operator_id','$chat_id','$visitor_phone','$date_entered','$date_entered','$response_json','$chat_history','0','$action','0')";
 $result = $db->query($query);

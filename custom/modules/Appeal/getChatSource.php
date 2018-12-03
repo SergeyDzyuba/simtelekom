@@ -10,7 +10,12 @@ if (isset($_REQUEST['chat_id']) && !empty($_REQUEST['chat_id'])) {//если в 
     $response = json_decode($result['response'], true);
 
     if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
-        $source = $response['visitor']['channel']['type'];
+        if ($response['visitor']['channel']['type']==='custom'){
+            $source = $response['visitor']['fields']['info'];
+        }
+        else {
+            $source = $response['visitor']['channel']['type'];
+        }
     } else {
         if (empty($response['start_page']['url']) && strpos($response['messages'][0]['message'], 'Браузер: Android')) {
             $source = 'mobile';

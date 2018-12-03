@@ -4,7 +4,7 @@ global $current_user, $db, $timedate;
 //$user->retrieve($current_user->id);
 if (!empty($current_user->webim_operator_id)) {//если у текущего пользователя есть id оператора webim
     //получение 10 нерассмотренных обращений-чатов для текущего оператора, которые откроются в новых вкладках
-    $query = "SELECT * FROM webim_chat_heap WHERE action='operator_assign' AND deleted=0 AND processed=0 AND operator_id='$current_user->webim_operator_id' ORDER BY date_entered LIMIT 10";
+    $query = "SELECT * FROM webim_chat_heap WHERE action='operator_assign' AND deleted=0 AND processed=0 AND operator_id='$current_user->webim_operator_id' ORDER BY date_entered DESC LIMIT 10";
     $result = $db->query($query);
     $heap = array();
     $contact = new Contact();

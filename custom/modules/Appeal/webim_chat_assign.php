@@ -25,11 +25,37 @@ $operator_id = $response['operator']['id'];
 $action = 'operator_assign';
 //$visitor_id = '';
 //$visitor_name = '';
+//if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
+//    $source = $response['visitor']['channel']['type'];
+//} else {
+//    $source = 'Сайт';
+//}
+
 if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
-    $source = $response['visitor']['channel']['type'];
+    if ($response['visitor']['channel']['type']==='custom'){
+        $source = $response['visitor']['fields']['info'];
+    }
+    else {
+        $source = $response['visitor']['channel']['type'];
+    }
 } else {
-    $source = 'Сайт';
+    if (empty($response['start_page']['url']) && strpos($response['messages'][0]['message'], 'Браузер: Android')) {
+        $source = 'mobile';
+    } else
+        $source = 'site';
 }
+switch ($source) {
+    case 'mobile':
+        echo 'Чат в мобильном приложении';
+        break;
+    case 'site':
+        echo 'Чат на сайте';
+        break;
+    default:
+        echo ucfirst($source);
+        break;
+}
+
 $visitor_phone = str_replace(array('+7', ' ', '(', ')', '-'), '', $response['visitor']['fields']['phone']);
 $query = "INSERT INTO webim_chat_heap VALUES ('$record_id','$operator_id','$chat_id','$visitor_phone','$date_entered','$date_entered','$response_json','$chat_history','0','$action','0')";
 $result = $db->query($query);
@@ -56,8 +82,8 @@ function sendEmailNotification($operator_id = '')
     $mail->ClearAllRecipients();
     $mail->ClearReplyTos();
 // Add recipient
-//    $mail->AddAddress('a.beresnev@sim-sim.com', 'A Beresnev');
-    $mail->AddAddress('qpopuk@yandex.ru', 'A Beresnev');
+    $mail->AddAddress('a.beresnev@sim-sim.com', 'A Beresnev');
+//    $mail->AddAddress('qpopuk@yandex.ru', 'A Beresnev');
 // Add subject
     $mail->Subject = "Оповещение от CRM. Не найден оператор в CRM";
 // Add mail content

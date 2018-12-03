@@ -23,17 +23,42 @@ class LinkWithAttachedDocuments
             $appeal = new Appeal();
             $appeal->retrieve($bean->id);
             global $db, $timedate, $current_user;
-            $query = "SELECT * FROM webim_chat_heap WHERE deleted=0 AND `action`='chat_close' AND chat_id='" . $_REQUEST['webim_appeal_id'] . "' LIMIT 0,1";
+            $query = "SELECT * FROM webim_chat_heap WHERE deleted=0 AND `action`='chat_close' AND chat_id='" . $_REQUEST['webim_appeal_id'] . "' ORDER BY `date_entered` DESC LIMIT 0,1";
             $result = $db->query($query);
             $result = $db->fetchByAssoc($result);
             $response = json_decode($result['response']);
             $docs = array();
             $counter = 0;
+//            if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
+//                $source = $response['visitor']['channel']['type'];
+//            } else {
+//                $source = 'Сайт';
+//            }
             if (isset($response['visitor']['channel']['type']) && !empty($response['visitor']['channel']['type'])) {
-                $source = $response['visitor']['channel']['type'];
+                if ($response['visitor']['channel']['type']==='custom'){
+                    $source = $response['visitor']['fields']['info'];
+                }
+                else {
+                    $source = $response['visitor']['channel']['type'];
+                }
             } else {
-                $source = 'Сайт';
+                if (empty($response['start_page']['url']) && strpos($response['messages'][0]['message'], 'Браузер: Android')) {
+                    $source = 'mobile';
+                } else
+                    $source = 'site';
             }
+            switch ($source) {
+                case 'mobile':
+                    echo 'Чат в мобильном приложении';
+                    break;
+                case 'site':
+                    echo 'Чат на сайте';
+                    break;
+                default:
+                    echo ucfirst($source);
+                    break;
+            }
+
             foreach ($response['messages'] as $key => $item) {
                 if (array_key_exists('file_operator', $item) || array_key_exists('file_visitor', $item)) {//если есть файлы в очередном сообщении
                     $file_params = json_decode($item['message'], true);
@@ -71,12 +96,17 @@ class LinkWithAttachedDocuments
 //                    $appeal->webim_appeal_history = $result['chat_history'];
                 if (!empty($source))
                     $set_params[] = "webim_appeal_source='{$source}'";
-                $query .= join(' AND ', $set_params);
+                $query .= join(' , ', $set_params);
                 $query .= " WHERE id='{$appeal->id}'";
+                $GLOBALS['log']->fatal('set_params=');
+                $GLOBALS['log']->fatal($set_params);
+                $GLOBALS['log']->fatal('query=');
+                $GLOBALS['log']->fatal($query);
 //                    $appeal->webim_appeal_source = $source;
 //                $query = "UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'";
                 if (!empty($set_params))
                     $appeal->db->query($query);
+                    $bean->mark_deleted();
             }
         }
     }
