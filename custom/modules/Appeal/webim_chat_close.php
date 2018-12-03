@@ -84,7 +84,7 @@ foreach ($response['messages'] as $key => $item) {
         $docs[$counter]['file_content_type'] = $file_params['content_type'];
         $docs[$counter]['file_source'] = $item['kind'];//file_visitor OR file_operator
         $docs[$counter]['file_timestamp'] = $item['created_at'];
-        $account_name = 'suitecrmdemosugare';
+        $account_name = 'simsimcom';
         $docs[$counter]['file_url'] = 'https://' . $account_name . '.webim.ru/l/o/download/' . $file_params['guid'] . '/' . $file_params['filename'];//исправить на что-то универсальное
         $counter++;
     }

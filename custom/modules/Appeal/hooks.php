@@ -68,7 +68,7 @@ class LinkWithAttachedDocuments
                     $docs[$counter]['file_content_type'] = $file_params['content_type'];
                     $docs[$counter]['file_source'] = $item['kind'];//file_visitor OR file_operator
                     $docs[$counter]['file_timestamp'] = $item['created_at'];
-                    $account_name = 'suitecrmdemosugare';
+                    $account_name = 'simsimcom';
                     $docs[$counter]['file_url'] = 'https://' . $account_name . '.webim.ru/l/o/download/' . $file_params['guid'] . '/' . $file_params['filename'];//исправить на что-то универсальное
                     $counter++;
                 }
@@ -106,7 +106,7 @@ class LinkWithAttachedDocuments
 //                $query = "UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'";
                 if (!empty($set_params))
                     $appeal->db->query($query);
-                    $bean->mark_deleted();
+                    $bean->deleted=1;
             }
         }
     }
