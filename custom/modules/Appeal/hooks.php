@@ -106,7 +106,8 @@ class LinkWithAttachedDocuments
 //                $query = "UPDATE {$appeal->table_name} SET webim_appeal_history='{$appeal->webim_appeal_history}' AND webim_appeal_source='{$appeal->webim_appeal_source}' WHERE id='{$appeal->id}'";
                 if (!empty($set_params))
                     $appeal->db->query($query);
-                    $bean->deleted=1;
+                    $mark_daleted_q = "UPDATE appeal SET deleted=1 WHERE id='$bean->id'";
+                    $appeal->db->query($mark_daleted_q);
             }
         }
     }
